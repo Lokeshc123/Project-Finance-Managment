@@ -29,7 +29,7 @@ public class Register extends JFrame {
         p1.add(p3);
         p3.setLayout(null);
         p3.add(j2);
-        j2.setBounds(145, 30, 120, 40);
+        j2.setBounds(145, 30, 200, 40);
         j2.setFont(new Font("Courier", Font.BOLD, 30));
         p1.setLayout(null);
         p3.setBounds(225, 200, 400, 400);
@@ -45,17 +45,17 @@ public class Register extends JFrame {
         p3.add(j3);
         p3.add(j4);
         p3.add(j5);
-        j3.setBounds(135, 100, 120, 40);
+        j3.setBounds(135, 100, 200, 40);
         j3.setFont(new Font("Courier", Font.PLAIN, 20));
         p3.add(t1);
         t1.setBounds(135, 140, 150, 25);
         t1.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
-        j4.setBounds(135, 180, 120, 40);
+        j4.setBounds(135, 180, 200, 40);
         j4.setFont(new Font("Courier", Font.PLAIN, 20));
         p3.add(t2);
         t2.setBounds(135, 220, 150, 25);
         t2.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
-        j5.setBounds(135, 260, 180, 40);
+        j5.setBounds(135, 260, 200, 40);
         j5.setFont(new Font("Courier", Font.PLAIN, 20));
         p3.add(t3);
         t3.setBounds(135, 300, 150, 25);
@@ -82,21 +82,24 @@ public class Register extends JFrame {
 
             String username = t1.getText();
             String password = t2.getText();
-
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "User Exist Already");
+            if (username.length() == 0 || password.length() == 0) {
+                JOptionPane.showMessageDialog(null, "Nothing Found in Textfield");
             } else {
-                store();
-            }
+                stmt.setString(1, username);
+                stmt.setString(2, password);
 
-            rs.close();
-            stmt.close();
-            conn.close();
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "User Exist Already");
+                } else {
+                    store();
+                }
+
+                rs.close();
+                stmt.close();
+                conn.close();
+            }
         } catch (SQLException ex) {
             System.err.println("SQL exception: " + ex.getMessage());
         }

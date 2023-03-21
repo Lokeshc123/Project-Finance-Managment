@@ -82,6 +82,8 @@ public class Login extends JFrame {
         p2.add(t2);
         l2.setFont(font);
         l2.setForeground(Color.white);
+        t1.setForeground(Color.white);
+        t2.setForeground(Color.white);
 
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
