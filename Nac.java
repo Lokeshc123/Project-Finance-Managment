@@ -17,6 +17,7 @@ public class Nac extends JFrame {
     JTextField t3 = new JTextField();
     JTextField t4 = new JTextField();
     JButton btn = new JButton("Register");
+    JButton btnx = new JButton("Home");
 
     Nac() {
         this.setVisible(true);
@@ -73,6 +74,17 @@ public class Nac extends JFrame {
         p2.add(btn);
         btn.setBounds(120, 560, 200, 30);
         btn.setFocusable(false);
+        p2.add(btnx);
+        btnx.setBounds(165, 620, 120, 30);
+        btnx.setFocusable(false);
+        btnx.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+
+                new Home().setVisible(true);
+                dispose();
+            }
+        });
+
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
 
@@ -114,9 +126,8 @@ public class Nac extends JFrame {
                                 pstmt.setString(2, pass);
                                 pstmt.setString(3, bal);
 
-                                int rowsAffected = pstmt.executeUpdate();
+                                pstmt.executeUpdate();
 
-                                System.out.println(rowsAffected + " row(s) inserted successfully");
                                 JOptionPane.showMessageDialog(null, "Register Successfully");
                             }
 

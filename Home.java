@@ -14,7 +14,7 @@ public class Home extends JFrame {
     JButton btn3 = new JButton("Balance");
     JButton btn4 = new JButton("Withdrawal");
     JButton btn5 = new JButton("Deposit");
-    JButton btn6 = new JButton("Admin Panel");
+    JButton btn6 = new JButton("Transfer");
     JButton btn7 = new JButton("Log Out");
 
     Home() {

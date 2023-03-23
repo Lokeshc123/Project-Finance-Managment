@@ -18,6 +18,7 @@ public class Register extends JFrame {
     JTextField t2 = new JTextField();
     JTextField t3 = new JTextField();
     JButton btn = new JButton("Sign up");
+    JButton btnx = new JButton("Home");
 
     Register() {
         this.setVisible(true);
@@ -32,7 +33,7 @@ public class Register extends JFrame {
         j2.setBounds(145, 30, 200, 40);
         j2.setFont(new Font("Courier", Font.BOLD, 30));
         p1.setLayout(null);
-        p3.setBounds(225, 200, 400, 400);
+        p3.setBounds(225, 200, 400, 450);
         p3.setBackground(Color.white);
         p1.setBounds(0, 0, 850, 800);
         j1.setBounds(100, 100, 150, 150);
@@ -63,6 +64,16 @@ public class Register extends JFrame {
         p3.add(btn);
         btn.setBounds(135, 340, 150, 30);
         btn.setFocusable(false);
+        p3.add(btnx);
+        btnx.setBounds(140, 400, 120, 30);
+        btnx.setFocusable(false);
+        btnx.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+
+                new Home().setVisible(true);
+                dispose();
+            }
+        });
 
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -101,7 +112,7 @@ public class Register extends JFrame {
                 conn.close();
             }
         } catch (SQLException ex) {
-            System.err.println("SQL exception: " + ex.getMessage());
+
         }
     }
 

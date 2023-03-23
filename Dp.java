@@ -14,6 +14,7 @@ public class Dp extends JFrame {
     JTextField t1 = new JTextField();
     JTextField t2 = new JTextField();
     JButton btn = new JButton("Deposit");
+    JButton btnx = new JButton("Home");
 
     Dp() {
         this.setVisible(true);
@@ -56,6 +57,16 @@ public class Dp extends JFrame {
         t2.setForeground(Color.white);
         p2.add(btn);
         btn.setBounds(120, 540, 170, 30);
+        p2.add(btnx);
+        btnx.setBounds(150, 620, 120, 30);
+        btnx.setFocusable(false);
+        btnx.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+
+                new Home().setVisible(true);
+                dispose();
+            }
+        });
 
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
