@@ -14,6 +14,7 @@ public class Bal extends JFrame {
     JTextField t1 = new JTextField();
     JTextField t2 = new JTextField();
     JButton btn = new JButton("Check");
+    JButton btnx = new JButton("Home");
 
     Bal() {
         this.setVisible(true);
@@ -56,6 +57,8 @@ public class Bal extends JFrame {
         t2.setForeground(Color.white);
         p2.add(btn);
         btn.setBounds(120, 540, 170, 30);
+        p2.add(btnx);
+        btnx.setBounds(120,580,170,30);
 
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {

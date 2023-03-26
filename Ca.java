@@ -14,6 +14,7 @@ public class Ca extends JFrame {
     JTextField t1 = new JTextField();
     JTextField t2 = new JTextField();
     JButton btn = new JButton("Delete");
+    JButton btnx = new JButton("Home");
 
     Ca() {
         this.setVisible(true);
@@ -56,6 +57,8 @@ public class Ca extends JFrame {
         t2.setForeground(Color.white);
         p2.add(btn);
         btn.setBounds(120, 540, 170, 30);
+        p2.add(btnx);
+        btnx.setBounds(120,580,170,30);
 
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {

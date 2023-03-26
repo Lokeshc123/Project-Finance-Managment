@@ -14,6 +14,7 @@ public class With extends JFrame {
     JTextField t1 = new JTextField();
     JTextField t2 = new JTextField();
     JButton btn = new JButton("Withdraw");
+    JButton btnx = new JButton("Home");
 
     With() {
         this.setVisible(true);

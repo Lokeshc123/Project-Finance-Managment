@@ -17,6 +17,7 @@ public class Nac extends JFrame {
     JTextField t3 = new JTextField();
     JTextField t4 = new JTextField();
     JButton btn = new JButton("Register");
+    JButton btnx = new JButton("Home");
 
     Nac() {
         this.setVisible(true);
@@ -73,6 +74,8 @@ public class Nac extends JFrame {
         p2.add(btn);
         btn.setBounds(120, 560, 200, 30);
         btn.setFocusable(false);
+        p2.add(btnx);
+        btnx.setBounds(120,580,170,30);
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
 
