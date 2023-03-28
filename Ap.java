@@ -85,6 +85,7 @@ public class Ap extends JFrame {
                 dispose();
             }
         });
+
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
 
@@ -156,6 +157,7 @@ public class Ap extends JFrame {
                 }
             }
         });
+
     }
 
     public static void main(String[] args) {

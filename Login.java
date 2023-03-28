@@ -125,7 +125,7 @@ public class Login extends JFrame {
             stmt.close();
             conn.close();
         } catch (SQLException ex) {
-            System.err.println("SQL exception: " + ex.getMessage());
+
         }
     }
 
