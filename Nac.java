@@ -75,6 +75,7 @@ public class Nac extends JFrame {
         btn.setBounds(120, 560, 200, 30);
         btn.setFocusable(false);
         p2.add(btnx);
+
         btnx.setBounds(165, 620, 120, 30);
         btnx.setFocusable(false);
         btnx.addActionListener(new ActionListener() {

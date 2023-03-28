@@ -58,6 +58,7 @@ public class Bal extends JFrame {
         p2.add(btn);
         btn.setBounds(120, 540, 170, 30);
         p2.add(btnx);
+
         btnx.setBounds(150, 620, 120, 30);
         btnx.setFocusable(false);
 
@@ -68,6 +69,7 @@ public class Bal extends JFrame {
                 dispose();
             }
         });
+
 
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {

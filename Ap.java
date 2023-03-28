@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import java.sql.*;
 
 public class Ap extends JFrame {
 
@@ -84,6 +85,79 @@ public class Ap extends JFrame {
                 dispose();
             }
         });
+
+        btn1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+
+                String str1 = t3.getText();
+                int acc1 = Integer.parseInt(str1);
+                String str2 = t4.getText();
+                if (str1.length() == 0 || str2.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "Nothing Found in Textfield");
+                } else {
+                    String url = "jdbc:mysql://localhost:3306/test";
+                    String user = "root";
+                    String password = "Iwin$100";
+                    try (Connection conn = DriverManager.getConnection(url, user, password);
+                            Statement stmt = conn.createStatement()) {
+                        String sql = "SELECT balance FROM customers WHERE account_number ='" + str1 + "' AND password='"
+                                + str2
+                                + "'";
+                        ResultSet rs = stmt.executeQuery(sql);
+
+                        if (rs.next()) {
+                            double balance1 = rs.getDouble("balance");
+                            String str3 = t1.getText();
+                            int acc = Integer.parseInt(str3);
+                            String query = "SELECT balance FROM customers WHERE account_number = ?";
+                            PreparedStatement ps = conn.prepareStatement(query);
+                            ps.setInt(1, acc);
+                            ResultSet rs1 = ps.executeQuery();
+                            if (rs1.next()) {
+                                double balance2 = rs.getDouble("balance");
+                                String str4 = t2.getText();
+                                int amt = Integer.parseInt(str4);
+                                double netamt = balance1 - amt;
+                                if (netamt < 0) {
+                                    JOptionPane.showMessageDialog(null, "Balance insufficient");
+                                } else {
+                                    balance1 = balance1 - amt;
+                                    balance2 = balance2 + amt;
+
+                                    String query1 = "UPDATE customers SET balance = ? WHERE account_number = ?";
+                                    ps = conn.prepareStatement(query1);
+                                    ps.setDouble(1, balance1);
+                                    ps.setInt(2, acc1);
+                                    int rowsUpdated1 = ps.executeUpdate();
+                                    String query2 = "UPDATE customers SET balance = ? WHERE account_number = ?";
+                                    ps = conn.prepareStatement(query2);
+                                    ps.setDouble(1, balance2);
+                                    ps.setInt(2, acc);
+                                    int rowsUpdated2 = ps.executeUpdate();
+
+                                    if (rowsUpdated1 > 0 && rowsUpdated2 > 0) {
+                                        JOptionPane.showMessageDialog(null, "Transfer Successfull");
+                                    } else {
+
+                                        JOptionPane.showMessageDialog(null, "Transfer Failed");
+                                    }
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Tranfer To Account does not exist");
+                            }
+
+                        }
+
+                        else {
+                            JOptionPane.showMessageDialog(null, "Tranfer From Account does not exist");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args) {
